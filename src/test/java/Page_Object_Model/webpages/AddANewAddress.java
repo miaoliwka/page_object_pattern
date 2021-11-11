@@ -5,7 +5,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class AddNewAddress {
+public class AddANewAddress {
     private WebDriver driver;
 
     @FindBy(css = "a[title='Addresses']")
@@ -32,7 +32,10 @@ public class AddNewAddress {
     @FindBy(xpath = "//button[@class='btn btn-primary float-xs-right']")
     private WebElement saveButton;
 
-    public AddNewAddress(WebDriver driver) {
+    @FindBy(xpath = "//article[@class='alert alert-success']")
+    private WebElement successAlert;
+
+    public AddANewAddress(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
     }
@@ -50,5 +53,8 @@ public class AddNewAddress {
         postcode.sendKeys("456-98762");
         country.click();
         saveButton.click();
+    }
+    public boolean successAlertIsVisible(){
+        return successAlert.isDisplayed();
     }
 }

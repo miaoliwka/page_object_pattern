@@ -3,6 +3,7 @@ package Tests;
 import Page_Object_Model.webpages.BuyItems;
 import Page_Object_Model.webpages.HomePage;
 import Page_Object_Model.webpages.SignInPage;
+import common.Utils;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -16,11 +17,7 @@ public class BuyItemsTest {
 
     @Before
     public void setUp() {
-        System.setProperty("webdriver.chrome.driver",
-                "src/main/resources/drivers/chromedriver");
-        driver = new ChromeDriver();
-        driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+        driver = Utils.setUpDriver();
     }
 
     @Test
@@ -29,9 +26,7 @@ public class BuyItemsTest {
         homePage.clickSignInButton();
 
         SignInPage signInPage = new SignInPage(driver);
-
-        Assert.assertTrue(signInPage.isPageOpened());
-        signInPage.signIn("brodie1@freeallapp.com", "qwerty1234");
+        signInPage.fillLoginUserData("brodie1@freeallapp.com", "qwerty1234");
 
         BuyItems buyItems = new BuyItems(driver);
         buyItems.buyAccessoriesItemAndDelete();
@@ -42,9 +37,7 @@ public class BuyItemsTest {
         homePage.clickSignInButton();
 
         SignInPage signInPage = new SignInPage(driver);
-
-        Assert.assertTrue(signInPage.isPageOpened());
-        signInPage.signIn("brodie1@freeallapp.com", "qwerty1234");
+        signInPage.fillLoginUserData("brodie1@freeallapp.com", "qwerty1234");
 
 
         BuyItems buyItems = new BuyItems(driver);

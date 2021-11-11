@@ -12,10 +12,13 @@ public class SignInPage {
     private WebElement homePage;
 
     @FindBy(xpath = "//input[@class='form-control']")
-    private WebElement userEmail;
+    private WebElement emailInput;
 
     @FindBy(xpath = "//input[@name='password']")
-    private WebElement password;
+    private WebElement passwordInput;
+
+    @FindBy(xpath = "//button[@data-action='show-password']")
+    private WebElement showPassword;
 
     @FindBy(xpath = "//button[@id='submit-login']")
     private WebElement submitButton;
@@ -23,35 +26,19 @@ public class SignInPage {
     @FindBy(xpath = "//li[@class='alert alert-danger']")
     private WebElement signInError;
 
-    public SignInPage(WebDriver driver) {
+        public SignInPage(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
     }
 
-    public void setUserEmail(String usersEmail) {
-        userEmail.clear();
-        userEmail.sendKeys(usersEmail);
+        public void fillLoginUserData(String email, String password) {
+            emailInput.sendKeys(email);
+            passwordInput.sendKeys(password);
+            showPassword.click();
+            submitButton.click();
     }
-    public void setUserPassword(String userPassword) {
-        password.clear();
-        password.sendKeys(userPassword);
-        }
 
-        public void signIn(String usersEmail, String password) {
-        if (isPageOpened()) {
-            setUserEmail(usersEmail);
-            setUserPassword(password);
-            clickOnSubmit();
-        }
-        }
-        public boolean isPageOpened(){
-        return homePage.getText().contains("Log in to your account");
-        }
-
-        public void clickOnSubmit() {
-        submitButton.click();
-    }
         public boolean errorMessageIsVisible() {
         return signInError.isDisplayed();
-        }
+    }
 }

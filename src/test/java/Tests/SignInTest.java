@@ -2,6 +2,7 @@ package Tests;
 
 import Page_Object_Model.webpages.HomePage;
 import Page_Object_Model.webpages.SignInPage;
+import common.Utils;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
@@ -16,11 +17,7 @@ public class SignInTest {
 
     @Before
     public void setUp() {
-        System.setProperty("webdriver.chrome.driver",
-                "src/main/resources/drivers/chromedriver");
-        driver = new ChromeDriver();
-        driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+        driver = Utils.setUpDriver();
     }
 
     @Test
@@ -29,9 +26,7 @@ public class SignInTest {
         homePage.clickSignInButton();
 
         SignInPage signInPage = new SignInPage(driver);
-
-        Assert.assertTrue(signInPage.isPageOpened());
-        signInPage.signIn("brodie1@freeallapp.com", "qwerty1234");
+        signInPage.fillLoginUserData("brodie1@freeallapp.com", "qwerty1234");
 
         Assert.assertEquals("John Smith", homePage.getNameOfLoggedUser());
     }
@@ -40,8 +35,9 @@ public class SignInTest {
     public void testSignInWithInvalidPassword() {
         HomePage homePage = new HomePage(driver);
         homePage.clickSignInButton();
+
         SignInPage signInPage = new SignInPage(driver);
-        signInPage.signIn("brodie1@freeallapp.com", "wrongPass");
+        signInPage.fillLoginUserData("brodie1@freeallapp.com", "wrongPass");
 
         Assert.assertTrue(signInPage.errorMessageIsVisible());
     }
@@ -50,8 +46,9 @@ public class SignInTest {
     public void testSignInWithInvalidEmail() {
         HomePage homePage = new HomePage(driver);
         homePage.clickSignInButton();
+
         SignInPage signInPage = new SignInPage(driver);
-        signInPage.signIn("wrongEmail@gmail.com", "qwerty1234");
+        signInPage.fillLoginUserData("wrongEmail@gmail.com", "qwerty1234");
 
         Assert.assertTrue(signInPage.errorMessageIsVisible());
     }
