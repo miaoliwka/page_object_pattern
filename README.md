@@ -11,7 +11,7 @@
 * AddANewAddress (add a new home address)
 * BuyItems (add accessories product to cart and delete it, add art product to cart and go to the payment process)
 * HomePage (home page of mystore)
-* Registration (registation a new user)
+* Registration (registration a new user)
 * SignInPage (log in a registered user)
 
 ----------------------------------------
