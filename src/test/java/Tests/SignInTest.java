@@ -26,7 +26,7 @@ public class SignInTest {
         homePage.clickSignInButton();
 
         SignInPage signInPage = new SignInPage(driver);
-        signInPage.fillLoginUserData("brodie1@freeallapp.com", "qwerty1234");
+        signInPage.fillLoginUserData("brodie1@freeallapp.com", "qwerty12345");
 
         Assert.assertEquals("John Smith", homePage.getNameOfLoggedUser());
     }
