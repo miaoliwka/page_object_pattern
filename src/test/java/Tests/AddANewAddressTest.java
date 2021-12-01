@@ -20,12 +20,11 @@ public class AddANewAddressTest {
     @Test
     public void AddANewAddress() {
         HomePage homePage = new HomePage(driver);
-        homePage.clickSignInButton();
-
         SignInPage signInPage = new SignInPage(driver);
-        signInPage.fillLoginUserData("brodie1@freeallapp.com", "qwerty1234");
-
         AddANewAddress addNewAddress = new AddANewAddress(driver);
+
+        homePage.clickSignInButton();
+        signInPage.fillLoginUserData("brodie1@freeallapp.com", "qwerty12345");
         addNewAddress.addANewAddress();
 
         Assert.assertTrue(addNewAddress.successAlertIsVisible());

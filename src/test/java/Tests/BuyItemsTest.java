@@ -23,24 +23,21 @@ public class BuyItemsTest {
     @Test
     public void SignInBuyItemAndDeleteFromCart() {
         HomePage homePage = new HomePage(driver);
-        homePage.clickSignInButton();
-
         SignInPage signInPage = new SignInPage(driver);
-        signInPage.fillLoginUserData("brodie1@freeallapp.com", "qwerty1234");
-
         BuyItems buyItems = new BuyItems(driver);
+
+        homePage.clickSignInButton();
+        signInPage.fillLoginUserData("brodie1@freeallapp.com", "qwerty12345");
         buyItems.buyAccessoriesItemAndDelete();
     }
     @Test
     public void SignInBuyItemsAndPay() {
         HomePage homePage = new HomePage(driver);
-        homePage.clickSignInButton();
-
         SignInPage signInPage = new SignInPage(driver);
-        signInPage.fillLoginUserData("brodie1@freeallapp.com", "qwerty1234");
-
-
         BuyItems buyItems = new BuyItems(driver);
+
+        homePage.clickSignInButton();
+        signInPage.fillLoginUserData("brodie1@freeallapp.com", "qwerty12345");
         buyItems.buyArtItemAndPaymentCheckout();
     }
 }

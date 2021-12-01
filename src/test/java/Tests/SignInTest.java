@@ -23,9 +23,9 @@ public class SignInTest {
     @Test
     public void testSignInWithValidCredentials() {
         HomePage homePage = new HomePage(driver);
-        homePage.clickSignInButton();
-
         SignInPage signInPage = new SignInPage(driver);
+
+        homePage.clickSignInButton();
         signInPage.fillLoginUserData("brodie1@freeallapp.com", "qwerty12345");
 
         Assert.assertEquals("John Smith", homePage.getNameOfLoggedUser());
@@ -34,9 +34,9 @@ public class SignInTest {
     @Test
     public void testSignInWithInvalidPassword() {
         HomePage homePage = new HomePage(driver);
-        homePage.clickSignInButton();
-
         SignInPage signInPage = new SignInPage(driver);
+
+        homePage.clickSignInButton();
         signInPage.fillLoginUserData("brodie1@freeallapp.com", "wrongPass");
 
         Assert.assertTrue(signInPage.errorMessageIsVisible());
@@ -45,10 +45,10 @@ public class SignInTest {
     @Test
     public void testSignInWithInvalidEmail() {
         HomePage homePage = new HomePage(driver);
-        homePage.clickSignInButton();
-
         SignInPage signInPage = new SignInPage(driver);
-        signInPage.fillLoginUserData("wrongEmail@gmail.com", "qwerty1234");
+
+        homePage.clickSignInButton();
+        signInPage.fillLoginUserData("wrongEmail@gmail.com", "qwerty12345");
 
         Assert.assertTrue(signInPage.errorMessageIsVisible());
     }

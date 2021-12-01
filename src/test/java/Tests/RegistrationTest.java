@@ -24,9 +24,9 @@ public class RegistrationTest {
         String password = "qwerty";
 
         HomePage homePage = new HomePage(driver);
-        homePage.clickSignInButton();
-
         Registration registration = new Registration(driver);
+
+        homePage.clickSignInButton();
         registration.fillUserRegisterData(firstName, lastName, email, password);
 
         Assert.assertEquals("Alice Smith", homePage.getNameOfLoggedUser());
