@@ -12,13 +12,16 @@ public class BuyItems {
     @FindBy(xpath = "//li[@id='category-6']")
     private WebElement accessoriesButton;
 
-    @FindBy(xpath = "//img[@alt='Brown bear cushion']")
-    private WebElement BrownBearCushionPillow;
+    @FindBy(xpath = "//img[@alt='Mountain fox cushion']")
+    private WebElement MountainFoxCushionPillow;
 
-    @FindBy(xpath = "//input[@value='11']")
+    @FindBy(xpath = "//input[@class='input-color' and @value='11']")
     private WebElement BlackColorOfPillow;
 
-    @FindBy(xpath = "//button[@data-button-action='add-to-cart']")
+    @FindBy(xpath = "//input[@name='qty']")
+    private WebElement fivePieces;
+
+    @FindBy(xpath = "//button[@class='btn btn-primary add-to-cart']")
     private WebElement addToCartButton;
 
     @FindBy(xpath = "//a[@class='btn btn-primary']")
@@ -32,9 +35,6 @@ public class BuyItems {
 
     @FindBy(xpath = "//img[@alt='Brown bear - Vector graphics']")
     private WebElement BrownBearGraphic;
-
-    @FindBy(xpath = "//input[@name='qty']")
-    private WebElement selectFiveSztuk;
 
     @FindBy(xpath = "//button[@class='btn btn-primary add-to-cart']")
     private WebElement clickAddToCartButton;
@@ -58,8 +58,10 @@ public class BuyItems {
 
     public void buyAccessoriesItemAndDelete(){
         accessoriesButton.click();
-        BrownBearCushionPillow.click();
+        MountainFoxCushionPillow.click();
         BlackColorOfPillow.click();
+        fivePieces.clear();
+        fivePieces.sendKeys("5");
         addToCartButton.click();
         proceedToCheckoutButton.click();
         deleteFromCartButton.click();
@@ -67,8 +69,6 @@ public class BuyItems {
     public void buyArtItemAndPaymentCheckout(){
         artButton.click();
         BrownBearGraphic.click();
-        selectFiveSztuk.clear();
-        selectFiveSztuk.sendKeys("5");
         clickAddToCartButton.click();
         proceedToCheckoutButton.click();
         proceedToCheckoutButton.click();
