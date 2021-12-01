@@ -19,7 +19,7 @@ public class Utils {
 
     public static String generateEmail() {
         Random random = new Random();
-        int randomNumber = random.nextInt(1000001);
+        int randomNumber = random.nextInt(1000002);
         return "testEmail" + randomNumber + "@mail.com";
     }
 }
