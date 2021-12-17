@@ -18,9 +18,6 @@ public class BuyItems {
     @FindBy(xpath = "//input[@class='input-color' and @value='11']")
     private WebElement BlackColorOfPillow;
 
-    @FindBy(xpath = "//input[@name='qty']")
-    private WebElement fivePieces;
-
     @FindBy(xpath = "//button[@class='btn btn-primary add-to-cart']")
     private WebElement addToCartButton;
 
@@ -60,8 +57,6 @@ public class BuyItems {
         accessoriesButton.click();
         MountainFoxCushionPillow.click();
         BlackColorOfPillow.click();
-        fivePieces.clear();
-        fivePieces.sendKeys("5");
         addToCartButton.click();
         proceedToCheckoutButton.click();
         deleteFromCartButton.click();
